@@ -5,8 +5,26 @@
         </h2>
     </x-slot>
     <x-partial.header />
+
       <!-- table -->
       <section class="pl-72 px-10 pt-10">
+        
+        <div class="grid grid-cols-2 pb-5">
+            <div class="justify-self-start">
+                <a href="{{ route('addItem') }}"
+                    class="bg-gradient-to-tl from-purple-700 to-pink-500 text-white rounded-md p-2 px-4 inline-block text-sm transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+                    Tambah Produk
+                </a>
+            </div>
+
+            <div class="justify-self-end">
+                <a href="#"
+                    class="bg-gradient-to-tl from-purple-700 to-pink-500 text-white rounded-md p-2 px-4 inline-block text-sm transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+                    Jual Produk
+                </a>
+            </div>
+        </div>
+
         <table class="min-w-full border border-gray-400 rounded-lg shadow-md overflow-hidden">
             <thead class="bg-gray-100">
                 <tr>
@@ -24,22 +42,28 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $produk->namaProduk }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $produk->harga }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $produk->stok }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            <button class="bg-blue-400 p-1 rounded-md text-white hover:bg-blue-600">
-                                <a href="#">Tambah</a>
-                            </button>
-                            <button class="bg-green-400 p-1 rounded-md text-white hover:bg-green-600">
-                                <a href="{{-- {{ route('edit', ['id' => $produk->produkID]) }} --}}#">Ubah</a>
-                            </button>
-                            <button class="bg-red-400 p-1 rounded-md text-white hover:bg-red-600" onclick="Destroy({{ $produk->produkID }})">
-                                Hapus
-                            </button>
+                        <td class="flex gap-2 px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            <a href="{{ route('editItem',  ['id' => $produk->produkID]) }}"
+                               class="bg-green-400 p-1 rounded-md text-white hover:bg-green-600 text-center inline-block">
+                                Ubah
+                            </a>
+                            <form action="{{ route('delete', $produk->produkID) }}" method="POST" 
+                                  onsubmit="return confirm('Yakin Mau hapus produk ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                        class="bg-red-400 p-1 rounded-md text-white hover:bg-red-600">
+                                    Hapus
+                                </button>
+                            </form>
                         </td>
+                        
                     </tr>
                     @endforeach
                 </tbody>
             </thead>
         </table> 
+
     </section>
       <!-- end table -->
 </x-app-layout>
