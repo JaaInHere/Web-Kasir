@@ -14,16 +14,16 @@ class DetailPenjualan extends Model
         'subTotalDecimal'
     ];
 
-    public function User(){
-        return $this->belongsTo(User::class, 'userID', 'id');
-    }
-
-    public function Penjualan()
+    protected $primaryKey = 'detailID';
+    public $incrementing = true;
+    
+    public function produk()
     {
-    return $this->hasMany(Penjualan::class, 'detail_id');
+        return $this->belongsTo(Produk::class, 'prd_produkID', 'produkID');
     }
-
-    public function Produk(){
-        return $this->hasMany(Produk::class, 'produkID', 'prd_produkID');
+    
+    public function penjualan()
+    {
+        return $this->belongsTo(Penjualan::class, 'penjualanID', 'penjualanID');
     }
 }

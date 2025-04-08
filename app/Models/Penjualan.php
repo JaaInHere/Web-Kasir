@@ -12,8 +12,11 @@ class Penjualan extends Model
         'totalHarga',
     ];
 
-    public function DetailPenjualan()
-{
-    return $this->belongsTo(DetailPenjualan::class, 'detail_id');
-}
+    protected $primaryKey = 'penjualanID';
+    public $incrementing = true;
+
+    public function detailPenjualans()
+    {
+        return $this->hasMany(DetailPenjualan::class, 'penjualanID', 'penjualanID');
+    }
 }

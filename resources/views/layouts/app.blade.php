@@ -34,6 +34,9 @@
     
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- java script -->
+        <script src="{{ asset('js/script.js') }}"></script>
     </head>
     
     <body class="font-sans antialiased">

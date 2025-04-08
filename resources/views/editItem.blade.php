@@ -12,7 +12,6 @@
                 Kembali
             </a>
         </div>
-        <p>nama produk: {{ $produk->namaProduk }}</p>
         <form class="max-w-xl pt-5" action="{{ route('update', $produk->produkID) }}" method="POST">
             @csrf
             <div class="pb-3">

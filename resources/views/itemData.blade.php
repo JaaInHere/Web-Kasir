@@ -16,13 +16,6 @@
                     Tambah Produk
                 </a>
             </div>
-
-            <div class="justify-self-end">
-                <a href="#"
-                    class="bg-gradient-to-tl from-purple-700 to-pink-500 text-white rounded-md p-2 px-4 inline-block text-sm transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-                    Jual Produk
-                </a>
-            </div>
         </div>
 
         <table class="min-w-full border border-gray-400 rounded-lg shadow-md overflow-hidden">
@@ -68,3 +61,4 @@
       <!-- end table -->
 </x-app-layout>
 <x-partial.script />
+

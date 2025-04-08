@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PenjualanController;
 
 Route::get('/', function () {
     return view('login');
@@ -32,6 +33,15 @@ Route::delete('/itemdata/{id}', [ProdukController::class, 'destroy'])->name('del
 Route::get('/edititem/{id}', [ProdukController::class, 'edit'])->middleware(['auth', 'verified'])->name('editItem');
 Route::post('/edititem/{id}', [ProdukController::class, 'update'])->name('update');
 // editItem end route
+
+// sale routes
+Route::get('/sale', [PenjualanController::class, 'create'])->name('penjualan.create');
+Route::post('/sale', [PenjualanController::class, 'store'])->name('penjualan.store');
+Route::get('/sale/{id}/struk', [PenjualanController::class, 'show'])->name('penjualan.struk');
+
+
+
+// sale end routes
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
