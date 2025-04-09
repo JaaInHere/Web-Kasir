@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
@@ -9,19 +10,22 @@ Route::get('/', function () {
     return view('login');
 });
 
+// dashboard routes
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [dashboardController::class, 'showDashboard'])->name('dashboard');
+// dashboard end routes
 
 // addItem Route
-Route::get('/additem', function() {
+Route::get('/additem', function () {
     return view('addItem');
 })->middleware(['auth', 'verified'])->name('addItem');
 Route::post('/additem', [ProdukController::class, 'addProduk'])->name('addProduk');
 // addItem end Route
 
 // itemData Route
-Route::get('/itemdata', function(){
+Route::get('/itemdata', function () {
     return view('itemData');
 })->middleware(['auth', 'verified'])->name('itemData');
 Route::get('/itemdata', [ProdukController::class, 'showProduk'])->name('itemData');
@@ -49,4 +53,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
