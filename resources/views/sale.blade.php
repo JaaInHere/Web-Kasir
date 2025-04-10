@@ -6,7 +6,7 @@
     </x-slot>
     <x-partial.header />
 
-    <section class="pl-72 px-10 pt-10">
+    <section class="pl-72 px-10 pt-10 pb-10">
         <form method="POST" action="{{ route('penjualan.store') }}">
             @csrf
             <div class="space-y-4" id="product-list">

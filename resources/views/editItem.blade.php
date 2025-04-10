@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <x-partial.header />
-    <section class="pl-72 px-10 pt-10">
+    <section class="pl-72 px-10 pt-10 pb-10">
         <div class="justify-self-start">
             <a href="{{ route('itemData') }}"
                 class="bg-gradient-to-tl from-purple-700 to-pink-500 text-white rounded-md p-2 px-4 inline-block text-sm transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">

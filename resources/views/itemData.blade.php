@@ -7,7 +7,7 @@
     <x-partial.header />
 
       <!-- table -->
-      <section class="pl-72 px-10 pt-10">
+      <section class="pl-72 px-10 pt-10 pb-10">
         
         <div class="grid grid-cols-2 pb-5">
             <div class="justify-self-start">

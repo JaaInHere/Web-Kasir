@@ -59,7 +59,7 @@
     </section>
     
 
-        <section class="pl-72 px-10 pt-10">
+        <section class="pl-72 px-10 pt-10 pb-10">
         <table class="min-w-full border border-gray-400 rounded-lg shadow-md overflow-hidden">
             <thead class="bg-gray-100">
                 <tr>
@@ -101,8 +101,6 @@
                 </tbody>
             </thead>
         </table> 
-
-
     </section>
 </x-app-layout>
 <x-partial.script />
