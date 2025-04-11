@@ -19,31 +19,31 @@
                             </option>
                         @endforeach
                     </select>
-
+    
                     <input type="number" name="jumlahProduk[]" class="p-2 border rounded jumlah-input" placeholder="Jumlah" min="1" />
-
+    
                     <input type="text" name="hargaSatuan[]" class="p-2 border rounded bg-gray-100 harga-satuan" placeholder="Harga Satuan" readonly />
-
+    
                     <input type="text" name="subtotal[]" class="p-2 border rounded bg-gray-100 subtotal" placeholder="Total" readonly />
-
+    
                     <button type="button" class="text-red-500 font-bold remove-product">✖</button>
                 </div>
             </div>
-
+    
             <div class="mt-4">
                 <button type="button" id="add-product" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah Produk</button>
             </div>
-
+    
             <div class="mt-6 flex justify-between items-center">
                 <div class="text-lg font-semibold">Total Keseluruhan:</div>
                 <div id="grand-total" class="text-xl font-bold">Rp 0</div>
             </div>
-
+    
             <div class="mt-6">
                 <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded">Simpan Penjualan</button>
             </div>
         </form>
     </section>
-</x-app-layout>
+    </x-app-layout>
 <x-partial.script />
 

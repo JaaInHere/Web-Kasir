@@ -51,3 +51,4 @@ class ProdukController extends Controller
             return redirect()->route('itemData')->with('error', 'Produk Tidak ditemukan');
     }
 }
+
