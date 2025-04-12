@@ -16,7 +16,7 @@ class PenjualanController extends Controller
 
     public function create()
 {
-    $produks = Produk::all();
+    $produks = Produk::where('stok', '>', 0)->get();
     return view('sale', compact('produks'));
 }
 
@@ -25,9 +25,15 @@ public function store(Request $request)
     $penjualan = DB::transaction(function () use ($request) {
         $total = 0;
 
+        // 🔒 Validasi stok sebelum lanjut
         foreach ($request->produkID as $index => $idProduk) {
             $produk = Produk::findOrFail($idProduk);
             $jumlah = $request->jumlahProduk[$index];
+
+            if ($jumlah > $produk->stok) {
+                abort(400, 'Jumlah produk "' . $produk->namaProduk . '" melebihi stok tersedia!');
+            }
+
             $total += $produk->harga * $jumlah;
         }
 

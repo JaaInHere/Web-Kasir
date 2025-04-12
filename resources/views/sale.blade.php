@@ -14,8 +14,8 @@
                     <select name="produkID[]" class="col-span-2 p-2 border rounded">
                         <option value="">Pilih Produk</option>
                         @foreach ($produks as $produk)
-                            <option value="{{ $produk->produkID }}" data-price="{{ $produk->harga }}">
-                                {{ $produk->namaProduk }}
+                            <option value="{{ $produk->produkID }}" data-price="{{ $produk->harga }}" data-stok="{{ $produk->stok }}">
+                                {{ $produk->namaProduk }} (stok: {{ $produk->stok }})
                             </option>
                         @endforeach
                     </select>

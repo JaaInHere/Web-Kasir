@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const productList = document.getElementById('product-list');
     const addButton = document.getElementById('add-product');
 
-    // Fungsi hitung total keseluruhan
     function updateGrandTotal() {
         let total = 0;
         document.querySelectorAll('input[name="subtotal[]"]').forEach(input => {
@@ -16,9 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.matches('select[name="produkID[]"]')) {
             const selectedOption = e.target.selectedOptions[0];
             const price = selectedOption.getAttribute('data-price');
+            const stok = selectedOption.getAttribute('data-stok');
             const wrapper = e.target.closest('.grid');
+
+            // Update harga satuan dan stok
             wrapper.querySelector('input[name="hargaSatuan[]"]').value = price;
-            wrapper.querySelector('input[name="jumlahProduk[]"]').dispatchEvent(new Event('input'));
+            const jumlahInput = wrapper.querySelector('input[name="jumlahProduk[]"]');
+            jumlahInput.setAttribute('max', stok); // Update batas jumlah
+            jumlahInput.setAttribute('data-stok', stok); // Simpan stok untuk validasi
+            jumlahInput.value = ""; // Reset jumlah saat produk berubah
+            jumlahInput.dispatchEvent(new Event('input'));
         }
     });
 
@@ -26,9 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
     productList.addEventListener('input', function (e) {
         if (e.target.matches('input[name="jumlahProduk[]"]')) {
             const wrapper = e.target.closest('.grid');
-            const quantity = parseFloat(e.target.value || 0);
+            const max = parseFloat(e.target.getAttribute('max') || Infinity);
+            const stok = parseFloat(e.target.dataset.stok || Infinity);
             const price = parseFloat(wrapper.querySelector('input[name="hargaSatuan[]"]').value || 0);
-            wrapper.querySelector('input[name="subtotal[]"]').value = price * quantity;
+            let quantity = parseFloat(e.target.value || 0);
+    
+            if (quantity > max) {
+                alert('Jumlah melebihi stok yang tersedia!');
+                quantity = max;
+                e.target.value = max;
+            }
+    
+            const subtotal = price * quantity;
+            wrapper.querySelector('input[name="subtotal[]"]').value = subtotal;
             updateGrandTotal();
         }
     });
@@ -49,6 +65,11 @@ document.addEventListener('DOMContentLoaded', function () {
         newRow.querySelectorAll('input, select').forEach(el => {
             if (el.tagName === 'SELECT') el.selectedIndex = 0;
             else el.value = '';
+
+            if (el.name === 'jumlahProduk[]') {
+                el.removeAttribute('data-stok');
+                el.removeAttribute('max');
+            }
         });
 
         productList.appendChild(newRow);
