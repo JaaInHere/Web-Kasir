@@ -7,6 +7,14 @@
     <x-partial.header />
 
     <section class="pl-72 px-10 pt-10 pb-10">
+        @if(session('error'))
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <strong class="font-bold">Oops!</strong>
+        <span class="block sm:inline">{{ session('error') }}</span>
+    </div>
+        @endif
+
+        <br>
         <form method="POST" action="{{ route('penjualan.store') }}">
             @csrf
             <div class="space-y-4" id="product-list">

@@ -13,63 +13,75 @@ use Illuminate\Support\Facades\Auth;
 
 class PenjualanController extends Controller
 {
-
     public function create()
-{
-    $produks = Produk::where('stok', '>', 0)->get();
-    return view('sale', compact('produks'));
-}
+    {
+        $produks = Produk::where('stok', '>', 0)->get();
+        return view('sale', compact('produks'));
+    }
 
-public function store(Request $request)
-{
-    $penjualan = DB::transaction(function () use ($request) {
-        $total = 0;
+    public function store(Request $request)
+    {
 
-        // 🔒 Validasi stok sebelum lanjut
+        $produkJumlah = [];
         foreach ($request->produkID as $index => $idProduk) {
-            $produk = Produk::findOrFail($idProduk);
             $jumlah = $request->jumlahProduk[$index];
+            if (isset($produkJumlah[$idProduk])) {
+                $produkJumlah[$idProduk] += $jumlah;
+            } else {
+                $produkJumlah[$idProduk] = $jumlah;
+            }
+        }
 
-            if ($jumlah > $produk->stok) {
-                abort(400, 'Jumlah produk "' . $produk->namaProduk . '" melebihi stok tersedia!');
+
+        foreach ($produkJumlah as $idProduk => $totalJumlah) {
+            $produk = Produk::findOrFail($idProduk);
+            if ($produk->stok < $totalJumlah) {
+                return redirect()->route('penjualan.create')
+                ->with('error', 'Stok produk "' . $produk->namaProduk . '" tidak mencukupi untuk jumlah yang diminta.');
+            }
+        }
+
+
+        $penjualan = DB::transaction(function () use ($request) {
+            $total = 0;
+
+            foreach ($request->produkID as $index => $idProduk) {
+                $produk = Produk::findOrFail($idProduk);
+                $jumlah = $request->jumlahProduk[$index];
+                $total += $produk->harga * $jumlah;
             }
 
-            $total += $produk->harga * $jumlah;
-        }
-
-        $penjualan = Penjualan::create([
-            'tanggalPenjualan' => now(),
-            'totalHarga' => $total,
-        ]);
-
-        foreach ($request->produkID as $index => $idProduk) {
-            $produk = Produk::findOrFail($idProduk);
-            $jumlah = $request->jumlahProduk[$index];
-            $subtotal = $produk->harga * $jumlah;
-
-            DetailPenjualan::create([
-                'userID' => Auth::id(), 
-                'penjualanID' => $penjualan->penjualanID,
-                'prd_produkID' => $idProduk,
-                'jumlahProduk' => $jumlah,
-                'subTotalDecimal' => $subtotal,
+            $penjualan = Penjualan::create([
+                'tanggalPenjualan' => now(),
+                'totalHarga' => $total,
             ]);
 
-            $produk->decrement('stok', $jumlah);
-        }
+            foreach ($request->produkID as $index => $idProduk) {
+                $produk = Produk::findOrFail($idProduk);
+                $jumlah = $request->jumlahProduk[$index];
+                $subtotal = $produk->harga * $jumlah;
 
-        return $penjualan;
-    });
+                DetailPenjualan::create([
+                    'userID' => Auth::id(),
+                    'penjualanID' => $penjualan->penjualanID,
+                    'prd_produkID' => $idProduk,
+                    'jumlahProduk' => $jumlah,
+                    'subTotalDecimal' => $subtotal,
+                ]);
 
-    return redirect()->route('penjualan.struk', $penjualan->penjualanID);
-  }
+                $produk->decrement('stok', $jumlah);
+            }
 
-  public function show($id)
-{
-    $penjualan = Penjualan::with('detailPenjualans.produk')->findOrFail($id);
-    return view('struk', compact('penjualan'));
-}
+            return $penjualan;
+        });
 
+        return redirect()->route('penjualan.struk', $penjualan->penjualanID);
+    }
 
+    public function show($id)
+    {
+        $penjualan = Penjualan::with('detailPenjualans.produk')->findOrFail($id);
+        return view('struk', compact('penjualan'));
+    }
 }
 

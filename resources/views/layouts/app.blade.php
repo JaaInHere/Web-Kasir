@@ -35,8 +35,6 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <!-- java script -->
-        <script src="{{ asset('js/script.js') }}"></script>
     </head>
     
     <body class="font-sans antialiased">
@@ -84,5 +82,10 @@
                 <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" class="hover:underline">Bagja Hadrinata™</a>. All Rights Reserved.</span>
             </div>
         </footer>
+
     </body>
+        <!-- java script -->
+        <script src="{{ asset('js/script.js') }}"></script>
+
 </html>
+
