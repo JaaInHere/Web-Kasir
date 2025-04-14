@@ -3,8 +3,7 @@
         <div class="h-19.5">
           <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
           <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="{{ route('dashboard') }}">
-            {{-- <img src="./assets/img/logo-ct.png" class="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" /> --}}
-            <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">Impact</span>
+            <img src="images/Impact-removebg.png" class="inline w-32 translate-y-[-48px]" alt="main_logo" />
           </a>
         </div>
   
@@ -60,7 +59,7 @@
                     </g>
                   </svg>
                 </div>
-                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Barang</span>
+                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft font-bold">Kelola Barang</span>
               </a>
             </li>
   
@@ -83,7 +82,7 @@
                     </g>
                   </svg>
                 </div>
-                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Produk Terjual</span>
+                <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft font-bold">Kelola Penjualan</span>
               </a>
             </li>
           </ul>

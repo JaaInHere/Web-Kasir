@@ -10,7 +10,7 @@
             
             <div class="flex flex-wrap justify-between mb-6">
 
-                <div class="w-1/2 lg:w-1/4 mb-4 lg:mb-0">
+                <div class="group w-1/2 lg:w-1/4 mb-4 lg:mb-0 transition duration-300 hover:scale-105 hover:shadow-lg rounded-2xl">
                     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="flex-auto p-4">
                             <div class="flex flex-row -mx-3">
@@ -36,8 +36,8 @@
                                     </div>
                                 </div>
                                 <div class="px-3 text-right basis-1/3">
-                                    <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                                        <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                                    <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500 transition duration-300 group-hover:rotate-12">
+                                        <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white transition duration-300 group-hover:rotate-12"></i>
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                 </div>
     
              
-                <div class="w-1/2 lg:w-1/4 mb-4 lg:mb-0">
+                <div class="group w-1/2 lg:w-1/4 mb-4 lg:mb-0 transition duration-300 hover:scale-105 hover:shadow-lg rounded-2xl">
                     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="flex-auto p-4">
                             <div class="flex flex-row -mx-3">
@@ -59,8 +59,8 @@
                                     </div>
                                 </div>
                                 <div class="px-3 text-right basis-1/3">
-                                    <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                                        <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                                    <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500 transition duration-300 group-hover:rotate-12">
+                                        <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white transform transition duration-300 group-hover:rotate-12"></i>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
          
             <div class="flex flex-wrap justify-between">
         
-                <div class="w-1/2 lg:w-1/4 mb-4 lg:mb-0">
+                <div class="group w-1/2 lg:w-1/4 mb-4 lg:mb-0 transition duration-300 hover:scale-105 hover:shadow-lg rounded-2xl">
                     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="flex-auto p-4">
                             <div class="flex flex-row -mx-3">
@@ -85,17 +85,17 @@
                                     </div>
                                 </div>
                                 <div class="px-3 text-right basis-1/3">
-                                    <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                                        <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                                    <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500 transition duration-300 group-hover:rotate-12">
+                                        <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white transform transition duration-300 group-hover:rotate-12"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>                
     
                
-                <div class="w-1/2 lg:w-1/4 mb-4 lg:mb-0">
+                <div class="group w-1/2 lg:w-1/4 mb-4 lg:mb-0 transition duration-300 hover:scale-105 hover:shadow-lg rounded-2xl">
                     <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="flex-auto p-4">
                             <div class="flex flex-row -mx-3">
@@ -108,8 +108,8 @@
                                     </div>
                                 </div>
                                 <div class="px-3 text-right basis-1/3">
-                                    <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
-                                        <i class="ni leading-none ni-paper-diploma text-lg relative top-3.5 text-white"></i>
+                                    <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500 transition duration-300 group-hover:rotate-12">
+                                        <i class="ni leading-none ni-paper-diploma text-lg relative top-3.5 text-white transform transition duration-300 group-hover:rotate-12"></i>
                                     </div>
                                 </div>
                             </div>
